@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <form (ngSubmit)="addData()">
+    <div class="form-group">
+      <label>User Name</label>
+      <input type="text" class="form-control  col-lg-6" name="name"[(ngModel)]="student.name">
+    </div>
+    <div class="form-group">
+      <label>User Email</label>
+      <input type="text" class="form-control  col-lg-6" name="email" [(ngModel)]="student.email">
+    </div>
+    <div class="form-group">
+      <label>User Contact</label>
+      <input type="text" class="form-control col-lg-6" name="contact" [(ngModel)]="student.contact">
+    </div>
+    <div class="form-group">
+     
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form> 
+
+ <table class="table table-hover table-bordered text-center">
+  <tr class=" table-success">
+  <th>Student ID</th>
+  <th>Student Name</th>
+  <th>Student Email</th>
+  <th>Student Contact</th>
+  <th>Modification</th>
+ 
+  </tr>
+
+  <tr *ngFor="let obj of dataArr">
+    <td>{{obj.Id}}</td>
+    <td>{{obj.name}}</td>
+    <td>{{obj.email}}</td>
+    <td>{{obj.contact}}</td>
+    <td><button class="btn btn-danger"(click)="deleteStudent(obj.Id)">Delete</button>
+    <button class="btn btn-success mx-2" routerLink="/edit/{{obj.Id}}">Edit</button>
+    </td>
+
+  </tr>
+ </table>
+ 
+</body>
+</html>
+
+
+ 
+
+
+
+

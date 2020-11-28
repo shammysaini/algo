@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
-import { Student } from './student.model';
-import{UserService} from './user.service';
+import { Component, OnInit } from '@angular/core';
+import { Student } from '../student.model';
+import{UserService} from '../user.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-uapi',
+  templateUrl: './uapi.component.html',
+  styleUrls: ['./uapi.component.css']
 })
-export class AppComponent {
-  title = 'algo';
+export class UapiComponent implements OnInit {
   dataArr:any;
   student= new Student();
-  constructor(private user:UserService)
-  {
-  }
-  ngOnInit()
-  {
+  
+
+  constructor(private user:UserService) {
+
+   }
+
+  ngOnInit(): void {
     this.getStudentData();
   }
+
   getStudentData()
   {
     //this.user.getData().subscribe((data:any[])=>{
@@ -39,6 +41,7 @@ export class AppComponent {
     
   
   }
+
   deleteStudent(id)
   {
     this.user.deleteStudent(id).subscribe(res=>{
@@ -46,4 +49,5 @@ export class AppComponent {
       this.getStudentData();
   })
 }
+
 }
